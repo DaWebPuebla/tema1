@@ -8,22 +8,26 @@
       
       
       
+        <link rel="canonical" href="https://DaWebPuebla.github.io/tema1/protocolo_http/">
+      
+      
+        <link rel="prev" href="../introduccion/">
       
       
       
         
       
       
-      <link rel="icon" href="/tema1/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Despliegue de Aplicaciones Web - Tema 1</title>
+        <title>El protocolo http - Despliegue de Aplicaciones Web - Tema 1</title>
       
     
     
-      <link rel="stylesheet" href="/tema1/assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -42,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("/tema1/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#el-protocolo-http" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -71,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/tema1/." title="Despliegue de Aplicaciones Web - Tema 1" class="md-header__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-header__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -91,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              El protocolo http
             
           </span>
         </div>
@@ -169,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/tema1/." title="Despliegue de Aplicaciones Web - Tema 1" class="md-nav__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-nav__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -187,7 +196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -214,7 +223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/introduccion/" class="md-nav__link">
+      <a href="../introduccion/" class="md-nav__link">
         
   
   
@@ -238,8 +247,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -250,11 +261,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -275,7 +286,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -290,10 +301,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/tema1/protocolo_http/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    El protocolo http
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -309,6 +347,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#url-uniform-resource-locator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL (Uniform Resource Locator)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -321,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/arquitectura_aplicaciones_web.md" class="md-nav__link">
+      <a href="../arquitectura_aplicaciones_web.md" class="md-nav__link">
         
   
   
@@ -349,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/despliegue_aplicaciones_web.md" class="md-nav__link">
+      <a href="../despliegue_aplicaciones_web.md" class="md-nav__link">
         
   
   
@@ -377,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/configuracion_servidores_web.md" class="md-nav__link">
+      <a href="../configuracion_servidores_web.md" class="md-nav__link">
         
   
   
@@ -464,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/configuracion_avanzada.md" class="md-nav__link">
+      <a href="../configuracion_avanzada.md" class="md-nav__link">
         
   
   
@@ -492,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/gestion_trafico.md" class="md-nav__link">
+      <a href="../gestion_trafico.md" class="md-nav__link">
         
   
   
@@ -579,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/seguridad_aplicaciones_web.md" class="md-nav__link">
+      <a href="../seguridad_aplicaciones_web.md" class="md-nav__link">
         
   
   
@@ -607,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/despliegue_entornos_virtuales.md" class="md-nav__link">
+      <a href="../despliegue_entornos_virtuales.md" class="md-nav__link">
         
   
   
@@ -642,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/tema1/referencias.md" class="md-nav__link">
+      <a href="../referencias.md" class="md-nav__link">
         
   
   
@@ -679,6 +748,27 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#url-uniform-resource-locator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL (Uniform Resource Locator)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -691,8 +781,45 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="el-protocolo-http">El protocolo HTTP</h1>
+<p>Antes de entrar en más materia, vamos a hablar de como realmente funciona la web; ya sea a través de un navegador o de una aplicación móvil, la comunicación entre el cliente y el servidor se realiza a través del protocolo HTTP (Hypertext Transfer Protocol) y la llamada World Wide Web (WWW).</p>
+<p>Cuando se accede a una página web, el navegador envía una solicitud HTTP al servidor web que aloja la página. El servidor procesa la solicitud y devuelve una respuesta HTTP que contiene el contenido de la página web solicitada. Este proceso se repite cada vez que se accede a una nueva página o se realiza una acción en la web.</p>
+<p>En este apartado veremos como funciona el protocolo HTTP y como se estructura la comunicación entre el cliente y el servidor, incluyendo los métodos HTTP, los códigos de estado y los encabezados de solicitud y respuesta.</p>
+<h2 id="url-uniform-resource-locator">URL (Uniform Resource Locator)</h2>
+<p>Antes de profundizar en el protocolo HTTP, es importante entender qué es una URL (Uniform Resource Locator) y cómo se utiliza para identificar recursos en la web. Una URL es una dirección que se utiliza para acceder a un recurso específico en Internet, como una página web, una imagen o un archivo.</p>
+<p>Normalmente una URL tiene el siguiente formato:</p>
+<div class="highlight"><pre><span></span><code>http://www.ejemplo.com:80/ruta/al/recurso?parametro1=valor1&amp;parametro2=valor2#fragmento
+</code></pre></div>
+<p>Esta URL se compone de varias partes:</p>
+<ul>
+<li><strong>Protocolo</strong>: Indica el protocolo de comunicación que se utilizará para acceder al recurso. En este caso, es <code>http</code>, pero también puede ser <code>https</code> para conexiones seguras.</li>
+<li><strong>Dominio</strong>: Es el nombre del servidor que aloja el recurso. En este caso, es <code>www.ejemplo.com</code>. Normalmente se identifica por el <code>fqdn</code> (Fully Qualified Domain Name) que es el nombre completo del dominio.</li>
+<li><strong>Puerto</strong>: Es el número de puerto que se utilizará para la comunicación. En este caso, es <code>80</code>, que es el puerto predeterminado para HTTP. Si no se especifica un puerto, se utilizará el puerto predeterminado según el protocolo. En caso de que el puerto sea el predeterminado, no es necesario especificarlo en la URL.</li>
+<li><strong>Ruta</strong>: Es la ubicación del recurso en el servidor. En este caso, es <code>/ruta/al/recurso</code>. La ruta puede incluir subdirectorios y el nombre del archivo que se desea acceder.</li>
+<li><strong>Parámetros de consulta</strong>: Son pares clave-valor que se utilizan para enviar información adicional al servidor. En este caso, son <code>parametro1=valor1</code> y <code>parametro2=valor2</code>. Los parámetros de consulta se separan del resto de la URL mediante el signo de interrogación <code>?</code> y se separan entre sí mediante el signo <code>&amp;</code>.</li>
+<li><strong>Fragmento</strong>: Es una referencia a una sección específica del recurso. En este caso, es <code>#fragmento</code>. El fragmento se utiliza para navegar a una parte específica de la página web y no se envía al servidor en la solicitud HTTP.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Una URL también es identificado como URI (Uniform Resource Identifier), que es un identificador más general que puede incluir tanto URLs como URNs (Uniform Resource Names). En este curso, nos centraremos principalmente en las URLs, ya que son las más utilizadas para acceder a recursos en la web.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -739,10 +866,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/tema1/", "features": ["navigation.top", "navigation.sections"], "search": "/tema1/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.sections"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/tema1/assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
