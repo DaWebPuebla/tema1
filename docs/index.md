@@ -14,8 +14,6 @@ Los objetivos de este tema son:
 * Desplegar con seguridad y eficiencia aplicaciones web en entornos de producción.
 
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
 ### Contenido
 
 El contenido de este tema se dividirá en varias secciones, que incluyen:
