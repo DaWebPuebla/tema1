@@ -16,11 +16,12 @@ copyright: Copyright &copy; 2026 Víctor Suárez. IES Puebla de Vicar.
 nav:
   - Home: index.md
   - Introducción: introduccion.md
+  - Evolución de la web: evolucion_web.md
   - Arquitecturas y Fundamentos de Despliegue:
       - El protocolo http: protocolo_http.md
       - Arquitectura de Aplicaciones Web: arquitectura_aplicaciones_web.md
       - Despliegue de Aplicaciones Web: despliegue_aplicaciones_web.md
-      - Configuración de Servidores Web: configuracion_servidores_web.md
+      - Instalación y Configuración de Servidores Web: configuracion_servidores_web.md
   - Configuración Avanzada y Gestión de Tráfico:
       - Configuración Avanzada: configuracion_avanzada.md
       - Gestión de Tráfico: gestion_trafico.md
