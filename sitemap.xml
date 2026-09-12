@@ -2,14 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://DaWebPuebla.github.io/tema1/</loc>
-         <lastmod>2026-09-08</lastmod>
+         <lastmod>2026-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://DaWebPuebla.github.io/tema1/arquitectura_aplicaciones_web/</loc>
+         <lastmod>2026-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://DaWebPuebla.github.io/tema1/configuracion_servidores_web/</loc>
+         <lastmod>2026-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://DaWebPuebla.github.io/tema1/despliegue_aplicaciones_web/</loc>
+         <lastmod>2026-09-12</lastmod>
+    </url>
+    <url>
+         <loc>https://DaWebPuebla.github.io/tema1/evolucion_web/</loc>
+         <lastmod>2026-09-12</lastmod>
     </url>
     <url>
          <loc>https://DaWebPuebla.github.io/tema1/introduccion/</loc>
-         <lastmod>2026-09-08</lastmod>
+         <lastmod>2026-09-12</lastmod>
     </url>
     <url>
          <loc>https://DaWebPuebla.github.io/tema1/protocolo_http/</loc>
-         <lastmod>2026-09-08</lastmod>
+         <lastmod>2026-09-12</lastmod>
     </url>
 </urlset>

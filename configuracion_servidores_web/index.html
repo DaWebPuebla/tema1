@@ -1,0 +1,1248 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://DaWebPuebla.github.io/tema1/configuracion_servidores_web/">
+      
+      
+        <link rel="prev" href="../despliegue_aplicaciones_web/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Instalación y Configuración de Servidores Web - Despliegue de Aplicaciones Web - Tema 1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instalacion-y-configuracion-de-servidores-web" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-header__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Despliegue de Aplicaciones Web - Tema 1
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instalación y Configuración de Servidores Web
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-nav__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Despliegue de Aplicaciones Web - Tema 1
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evolucion_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evolución de la web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitecturas y Fundamentos de Despliegue
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitecturas y Fundamentos de Despliegue
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocolo_http/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    El protocolo http
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitectura_aplicaciones_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura de Aplicaciones Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../despliegue_aplicaciones_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Despliegue de Aplicaciones Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación y Configuración de Servidores Web
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación y Configuración de Servidores Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-apache-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de Apache en Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de Apache en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-debianubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Debian/Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-red-hatcentosfedora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Red Hat/CentOS/Fedora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-instalacion-de-apache-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: Instalación de Apache en Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-mariadb-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de MariaDB en Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de MariaDB en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-debianubuntu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Debian/Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-red-hatcentosfedora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Red Hat/CentOS/Fedora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración de MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-php-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de PHP en Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de PHP en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-debianubuntu_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Debian/Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-red-hatcentosfedora_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Red Hat/CentOS/Fedora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-instalacion-y-comprobacion-de-php-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 4: Instalación y Comprobación de PHP en Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración Avanzada y Gestión de Tráfico
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuración Avanzada y Gestión de Tráfico
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion_avanzada.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración Avanzada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gestion_trafico.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Tráfico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seguridad y Despliegue en Entornos Virtuales
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Seguridad y Despliegue en Entornos Virtuales
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seguridad_aplicaciones_web.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seguridad en Aplicaciones Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../despliegue_entornos_virtuales.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Despliegue en Entornos Virtuales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-apache-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de Apache en Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de Apache en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-debianubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Debian/Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-red-hatcentosfedora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Red Hat/CentOS/Fedora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-instalacion-de-apache-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: Instalación de Apache en Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-mariadb-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de MariaDB en Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de MariaDB en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-debianubuntu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Debian/Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-red-hatcentosfedora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Red Hat/CentOS/Fedora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración de MariaDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-php-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de PHP en Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de PHP en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-debianubuntu_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Debian/Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribuciones-basadas-en-red-hatcentosfedora_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribuciones basadas en Red Hat/CentOS/Fedora
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-instalacion-y-comprobacion-de-php-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 4: Instalación y Comprobación de PHP en Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="instalacion-y-configuracion-de-servidores-web">Instalación y Configuración de Servidores Web</h1>
+<p>En esta sección, vamos a explorar cómo instalar y configurar el servidor web Apache en un sistema operativo Linux. Apache es uno de los servidores web más populares y ampliamente utilizados, y es compatible con múltiples sistemas operativos y lenguajes de programación.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Antes de comenzar con la instalación y configuración de Apache, asegúrate de tener acceso a un sistema operativo Linux y privilegios de administrador (root) para realizar la instalación y configuración del servidor web. Puedes crear una máquina virtual o utilizar un entorno de desarrollo local para practicar la instalación y configuración de Apache.</p>
+</div>
+<h2 id="instalacion-de-apache-en-linux">Instalación de Apache en Linux</h2>
+<p>Para instalar Apache en un sistema operativo Linux, puedes utilizar el gestor de paquetes de tu distribución. A continuación, se muestran los comandos para instalar Apache en algunas distribuciones populares de Linux:</p>
+<h3 id="distribuciones-basadas-en-debianubuntu">Distribuciones basadas en Debian/Ubuntu</h3>
+<p>Para instalar Apache en distribuciones basadas en Debian o Ubuntu, puedes utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2
+</code></pre></div>
+<p>Asegúrate de que el servicio de Apache se inicie automáticamente al arrancar el sistema. Puedes habilitar el servicio con el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>apache2
+</code></pre></div>
+<p>Y comprobar que el servicio está activo con el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>apache2
+</code></pre></div>
+<p>Esto debería de mostrar que el servicio de Apache está activo y en ejecución. Podemos acceder desde dicha máquina a la dirección <code>http://localhost</code> o <code>http://&lt;IP_DE_LA_MAQUINA&gt;</code> para poder ver la web de bienvenida de Apache, que nos indica que el servidor web está funcionando correctamente.</p>
+<h3 id="distribuciones-basadas-en-red-hatcentosfedora">Distribuciones basadas en Red Hat/CentOS/Fedora</h3>
+<p>Para instalar Apache en distribuciones basadas en Red Hat, CentOS o Fedora, puedes utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>httpd
+</code></pre></div>
+<p>Para comprobar que el servicio de Apache se inicie automáticamente al arrancar el sistema, puedes habilitar el servicio con el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+</code></pre></div>
+<p>Y comprobar que el servicio está activo con el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>httpd
+</code></pre></div>
+<h3 id="ejercicio-3-instalacion-de-apache-en-linux">Ejercicio 3: Instalación de Apache en Linux</h3>
+<p>Desde tu máquina virtual o entorno de desarrollo local, realiza la instalación de Apache utilizando los comandos correspondientes a tu distribución de Linux. Asegúrate de que el servicio de Apache esté activo y en ejecución, y accede a la dirección <code>http://localhost</code> o <code>http://&lt;IP_DE_LA_MAQUINA&gt;</code> para verificar que el servidor web está funcionando correctamente.</p>
+<p>Ahora, vamos a utilizar el fichero del ejercicio 2 <em>(Despliegue en Github Pages)</em> para poder desplegarlo en nuestro servidor web Apache. Para ello, copia el fichero <code>index.html</code> en la carpeta <code>/var/www/html/</code> de tu máquina virtual o entorno de desarrollo local. Asegúrate de que el fichero tenga los permisos adecuados para que Apache pueda acceder a él.</p>
+<p>Una vez copiado el fichero, accede a la dirección <code>http://localhost/index.html</code> o <code>http://&lt;IP_DE_LA_MAQUINA&gt;/index.html</code> para verificar que la aplicación web estática se ha desplegado correctamente en tu servidor web Apache.</p>
+<h2 id="instalacion-de-mariadb-en-linux">Instalación de MariaDB en Linux</h2>
+<p>Para instalar MariaDB en un sistema operativo Linux, puedes utilizar el gestor de paquetes de tu distribución. A continuación, se muestran los comandos para instalar MariaDB en algunas distribuciones populares de Linux:</p>
+<h3 id="distribuciones-basadas-en-debianubuntu_1">Distribuciones basadas en Debian/Ubuntu</h3>
+<p>Para instalar MariaDB en distribuciones basadas en Debian o Ubuntu, puedes utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mariadb-server
+</code></pre></div>
+<p>Puedes comprobar que el servicio de MariaDB está activo y en ejecución con el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mariadb
+</code></pre></div>
+<h3 id="distribuciones-basadas-en-red-hatcentosfedora_1">Distribuciones basadas en Red Hat/CentOS/Fedora</h3>
+<p>Para instalar MariaDB en distribuciones basadas en Red Hat, CentOS o Fedora, puedes utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>mariadb-server
+</code></pre></div>
+<p>Y para comprobar que el servicio de MariaDB está activo y en ejecución, puedes utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mariadb
+</code></pre></div>
+<h3 id="configuracion-de-mariadb">Configuración de MariaDB</h3>
+<p>Vamos a realizar la configuración inicial de MariaDB para asegurar que el servidor de base de datos esté protegido y listo para su uso. Ejecuta el siguiente comando para iniciar el script de seguridad de MariaDB:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mysql_secure_installation
+</code></pre></div>
+<p>Este script te guiará a través de una serie de pasos para configurar la seguridad de MariaDB, incluyendo la configuración de la contraseña del usuario root, la eliminación de usuarios anónimos y la desactivación del acceso remoto para el usuario root.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Asegúrate de seguir las instrucciones del script y configurar una contraseña segura para el usuario root de MariaDB. Esto es importante para proteger tu servidor de base de datos y garantizar la seguridad de tus aplicaciones web.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Para más información sobre la instalación y configuración de Apache y MariaDB en Linux, puedes consultar la documentación oficial de Apache en <a href="https://httpd.apache.org/docs/">Apache HTTP Server Documentation</a> y la documentación oficial de MariaDB en <a href="https://mariadb.com/kb/en/">MariaDB Knowledge Base</a>.</p>
+</div>
+<h2 id="instalacion-de-php-en-linux">Instalación de PHP en Linux</h2>
+<p>Para instalar PHP en un sistema operativo Linux, puedes utilizar el gestor de paquetes de tu distribución. A continuación, se muestran los comandos para instalar PHP en algunas distribuciones populares de Linux:</p>
+<h3 id="distribuciones-basadas-en-debianubuntu_2">Distribuciones basadas en Debian/Ubuntu</h3>
+<p>Para instalar PHP en distribuciones basadas en Debian o Ubuntu, puedes utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>php<span class="w"> </span>libapache2-mod-php<span class="w"> </span>php-mysql
+</code></pre></div>
+<p>En este caso se instalan varios paquetes de PHP, incluyendo el módulo de Apache para PHP y el módulo de MySQL para PHP, que permite la conexión a bases de datos MariaDB/MySQL desde aplicaciones web desarrolladas en PHP.</p>
+<h3 id="distribuciones-basadas-en-red-hatcentosfedora_2">Distribuciones basadas en Red Hat/CentOS/Fedora</h3>
+<p>Para instalar PHP en distribuciones basadas en Red Hat, CentOS o Fedora, puedes utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>php<span class="w"> </span>php-mysqlnd
+</code></pre></div>
+<p>En este caso se instalan varios paquetes de PHP, incluyendo el módulo de MySQL para PHP, que permite la conexión a bases de datos MariaDB/MySQL desde aplicaciones web desarrolladas en PHP.</p>
+<h3 id="ejercicio-4-instalacion-y-comprobacion-de-php-en-linux">Ejercicio 4: Instalación y Comprobación de PHP en Linux</h3>
+<p>Desde tu máquina virtual o entorno de desarrollo local, realiza la instalación de PHP utilizando los comandos correspondientes a tu distribución de Linux. Asegúrate de que el módulo de Apache para PHP y el módulo de MySQL para PHP estén instalados correctamente.</p>
+<p>Una vez instalado PHP, vamos a crear un archivo de prueba para verificar que PHP está funcionando correctamente en nuestro servidor web Apache. Crea un archivo llamado <code>info.php</code> en la carpeta <code>/var/www/html/</code> con el siguiente contenido:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">phpinfo</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<p>Una vez creado el archivo, accede a la dirección <code>http://localhost/info.php</code> o <code>http://&lt;IP_DE_LA_MAQUINA&gt;/info.php</code> para verificar que PHP está funcionando correctamente en tu servidor web Apache. Deberías ver una página con información detallada sobre la configuración de PHP en tu servidor.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Para más información sobre la instalación y configuración de PHP en Linux, puedes consultar la documentación oficial de PHP en <a href="https://www.php.net/manual/en/install.php">PHP Manual</a>. Recuerda que aprenderás más sobre la sintaxis de PHP y cómo desarrollar aplicaciones web dinámicas en PHP en el módulo de <em>Desarrollo de aplicaciones web En Entorno Servidor</em> (DAW) de este curso.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Víctor Suárez. IES Puebla de Vicar.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.sections"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

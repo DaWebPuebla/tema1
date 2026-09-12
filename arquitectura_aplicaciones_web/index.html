@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://DaWebPuebla.github.io/tema1/">
+        <link rel="canonical" href="https://DaWebPuebla.github.io/tema1/arquitectura_aplicaciones_web/">
       
       
+        <link rel="prev" href="../protocolo_http/">
       
-        <link rel="next" href="introduccion/">
+      
+        <link rel="next" href="../despliegue_aplicaciones_web/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Despliegue de Aplicaciones Web - Tema 1</title>
+        <title>Arquitectura de Aplicaciones Web - Despliegue de Aplicaciones Web - Tema 1</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -46,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -64,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#despliegues-de-aplicaciones-web-tema-1" class="md-skip">
+        <a href="#arquitectura-de-aplicaciones-web" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Despliegue de Aplicaciones Web - Tema 1" class="md-header__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-header__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Arquitectura de Aplicaciones Web
             
           </span>
         </div>
@@ -178,7 +180,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Despliegue de Aplicaciones Web - Tema 1" class="md-nav__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-nav__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -193,37 +195,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -239,87 +214,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ud1-servidores-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        UD1. Servidores Web
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UD1. Servidores Web">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#objetivos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Objetivos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contenido" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contenido
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#licencia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Licencia
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#versiones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versiones
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -331,7 +225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="introduccion/" class="md-nav__link">
+      <a href="../introduccion/" class="md-nav__link">
         
   
   
@@ -358,7 +252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="evolucion_web/" class="md-nav__link">
+      <a href="../evolucion_web/" class="md-nav__link">
         
   
   
@@ -382,8 +276,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -394,11 +290,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -419,7 +315,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -437,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="protocolo_http/" class="md-nav__link">
+      <a href="../protocolo_http/" class="md-nav__link">
         
   
   
@@ -462,10 +358,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="arquitectura_aplicaciones_web/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura de Aplicaciones Web
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -481,6 +404,48 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-de-aplicaciones-web-y-su-relacion-con-la-evolucion-de-la-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura de aplicaciones web y su relación con la evolución de la web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-arquitecturas-de-aplicaciones-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipos de arquitecturas de aplicaciones web
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -493,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="despliegue_aplicaciones_web/" class="md-nav__link">
+      <a href="../despliegue_aplicaciones_web/" class="md-nav__link">
         
   
   
@@ -521,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="configuracion_servidores_web/" class="md-nav__link">
+      <a href="../configuracion_servidores_web/" class="md-nav__link">
         
   
   
@@ -608,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="configuracion_avanzada.md" class="md-nav__link">
+      <a href="../configuracion_avanzada.md" class="md-nav__link">
         
   
   
@@ -636,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="gestion_trafico.md" class="md-nav__link">
+      <a href="../gestion_trafico.md" class="md-nav__link">
         
   
   
@@ -723,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="seguridad_aplicaciones_web.md" class="md-nav__link">
+      <a href="../seguridad_aplicaciones_web.md" class="md-nav__link">
         
   
   
@@ -751,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="despliegue_entornos_virtuales.md" class="md-nav__link">
+      <a href="../despliegue_entornos_virtuales.md" class="md-nav__link">
         
   
   
@@ -786,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="referencias.md" class="md-nav__link">
+      <a href="../referencias.md" class="md-nav__link">
         
   
   
@@ -833,63 +798,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ud1-servidores-web" class="md-nav__link">
+  <a href="#arquitectura-de-aplicaciones-web-y-su-relacion-con-la-evolucion-de-la-web" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UD1. Servidores Web
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UD1. Servidores Web">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#objetivos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Objetivos
+        Arquitectura de aplicaciones web y su relación con la evolución de la web
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#contenido" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-arquitecturas-de-aplicaciones-web" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contenido
+        Tipos de arquitecturas de aplicaciones web
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#licencia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Licencia
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#versiones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versiones
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -910,35 +836,64 @@
 
 
 
-<h1 id="despliegues-de-aplicaciones-web-tema-1">Despliegues de aplicaciones web - Tema 1</h1>
-<h2 id="ud1-servidores-web">UD1. Servidores Web</h2>
-<p>En este tema, aprenderemos a desplegar aplicaciones web en servidores web, utilizando diferentes tecnologías y herramientas. Cubriremos aspectos como la configuración del servidor, la optimización del rendimiento, la seguridad y las mejores prácticas para el despliegue de aplicaciones.</p>
-<h3 id="objetivos">Objetivos</h3>
-<p>Los objetivos de este tema son:</p>
+<h1 id="arquitectura-de-aplicaciones-web">Arquitectura de aplicaciones web</h1>
+<p>A la hora de desarrollar aplicaciones web, es importante comprender la arquitectura subyacente que permite su funcionamiento. La arquitectura de aplicaciones web se refiere a la estructura y organización de los componentes que conforman una aplicación web, así como a la forma en que estos componentes interactúan entre sí y con los usuarios.</p>
+<p>La arquitectura de aplicaciones web puede ser dividida en varias capas, cada una con su propio propósito y responsabilidad. </p>
+<figure>
+  <img src="../img/arqwebs.png" width="400">
+  <figcaption>Arquitectura de aplicaciones web</figcaption>
+</figure>
+
+<p>En esta figura podemos ver una representación de la arquitectura de aplicaciones web, que incluye las siguientes capas:</p>
 <ul>
-<li>Comprender los conceptos básicos de los servidores web y su funcionamiento.</li>
-<li>Aprender a configurar y administrar servidores web para el despliegue de aplicaciones.</li>
-<li>Conocer las mejores prácticas para optimizar el rendimiento y la seguridad de las aplicaciones web.</li>
-<li>Configurar los servidores web para soportar diferentes tipos de aplicaciones y tecnologías.</li>
-<li>Desplegar con seguridad y eficiencia aplicaciones web en entornos de producción.</li>
+<li><em>Capa de presentación</em>: Esta capa es responsable de la interfaz de usuario y la interacción con el usuario. Incluye elementos como HTML, CSS y JavaScript, que permiten mostrar contenido y recibir entradas del usuario.</li>
+<li><em>Capa de lógica de negocio</em>: Esta capa contiene la lógica y las reglas de negocio de la aplicación. Se encarga de procesar las solicitudes del usuario, realizar cálculos y tomar decisiones basadas en la información disponible.</li>
+<li><em>Capa de acceso a datos</em>: Esta capa se encarga de almacenar y recuperar información de la aplicación. Puede incluir bases de datos, sistemas de archivos u otros servicios de almacenamiento. La capa de datos se comunica con la capa de lógica de negocio para proporcionar la información necesaria para procesar las solicitudes del usuario.</li>
 </ul>
-<h3 id="contenido">Contenido</h3>
-<p>El contenido de este tema se dividirá en varias secciones, que incluyen:</p>
-<ol>
-<li>Introducción a los servidores web</li>
-<li>Arquitecturas y Fundamentos de Despliegue</li>
-<li>Configuración Avanzada y Gestión de Tráfico</li>
-<li>Seguridad y Despliegue en Entornos Virtuales</li>
-</ol>
-<h3 id="licencia">Licencia</h3>
-<p>Este contenido está licenciado bajo la Licencia Creative Commons Atribución 4.0 Internacional (CC BY 4.0) (Salvo que se indique lo contrario). Esto significa que puedes compartir, copiar y redistribuir el material en cualquier medio o formato, así como adaptarlo, remezclarlo, transformarlo y construir a partir del material para cualquier propósito, incluso comercialmente, siempre y cuando se otorgue el crédito adecuado al autor original.</p>
+<p>Es importante también hacer una división en dos partes. La parte que tiene interacción con el usuario, es considerado el Frontend, y la parte que no tiene interacción con el usuario, es considerado el Backend. Cada apartado tiene diferentes tecnologías y lenguajes de programación asociados, que permiten desarrollar aplicaciones web de manera eficiente y escalable.</p>
+<ul>
+<li>
+<p><strong>Frontend</strong>: Esta parte de la aplicación web se encarga de la presentación y la interacción con el usuario. Incluye tecnologías como HTML, CSS y JavaScript, así como frameworks y bibliotecas como React, Angular o Vue.js, que facilitan el desarrollo de interfaces de usuario dinámicas y responsivas.</p>
+</li>
+<li>
+<p><strong>Backend</strong>: Esta parte de la aplicación web se encarga de la lógica de negocio y el acceso a datos. Incluye lenguajes de programación como Python, Java, PHP, Node.js, entre otros, y frameworks que permiten construir servicios web robustos y escalables.</p>
+</li>
+</ul>
+<h2 id="arquitectura-de-aplicaciones-web-y-su-relacion-con-la-evolucion-de-la-web">Arquitectura de aplicaciones web y su relación con la evolución de la web</h2>
+<p>La evolución de la web ha llevado a cambios significativos en la forma en que se diseñan y desarrollan las aplicaciones web. Desde las primeras páginas estáticas hasta las aplicaciones web modernas, la arquitectura ha ido evolucionando para adaptarse a las necesidades cambiantes de los usuarios y los desarrolladores.</p>
+<p>Vamos a hablar de la evolución de la web y cómo ha influido en la arquitectura de las aplicaciones web, desde la Web 1.0 hasta la Web 3.0.</p>
+<ul>
+<li><em>Aplicaciones CGI</em>: En la Web 1.0, las aplicaciones web eran principalmente estáticas y unidireccionales. Los usuarios podían acceder a información, pero la interacción era mínima. La arquitectura de estas aplicaciones se centraba en la presentación de contenido y no requería procesamiento del lado del servidor.</li>
+<li><em>Aplicaciones web dinámicas</em>: Gracias a la utilización de lenguajes de programación del lado del servidor, como PHP, Python y Ruby, así como a la adopción de tecnologías como AJAX, las aplicaciones web comenzaron a ser más dinámicas y permitieron a los usuarios crear contenido, interactuar con otros usuarios y personalizar su experiencia en línea.</li>
+<li><em>Aplicaciones web PDA</em>: Hoy en día, con las diferentes tecnologías que podemos encontrar, se pueden crear aplicaciones web progresivas (PWA) que combinan lo mejor de las aplicaciones web y las aplicaciones móviles, ofreciendo funcionalidades como notificaciones push, acceso sin conexión y rendimiento optimizado. Además, la Web 3.0 busca mejorar la experiencia del usuario mediante el uso de inteligencia artificial y aprendizaje automático para ofrecer contenido más relevante y personalizado.</li>
+</ul>
+<h2 id="tipos-de-arquitecturas-de-aplicaciones-web">Tipos de arquitecturas de aplicaciones web</h2>
+<p>Una vez hemos visto la arquitectura más común de las aplicaciones web, es importante conocer los diferentes tipos de arquitecturas que se pueden utilizar para desarrollar aplicaciones web. Cada tipo de arquitectura tiene sus propias ventajas y desventajas, y la elección de una u otra dependerá de los requisitos específicos del proyecto.</p>
+<p>Veamos algunos de los tipos de arquitecturas más comunes:</p>
+<ul>
+<li><strong>Arquitectura monolítica</strong>: En esta arquitectura, todos los componentes de la aplicación web se encuentran integrados en un único bloque de código. Esto puede facilitar el desarrollo inicial, pero puede dificultar la escalabilidad y el mantenimiento a medida que la aplicación crece.</li>
+<li><strong>Arquitectura de microservicios</strong>: En esta arquitectura, la aplicación web se divide en múltiples servicios independientes, cada uno con su propia lógica de negocio y base de datos. Esto permite una mayor escalabilidad y flexibilidad, ya que cada servicio puede ser desarrollado, desplegado y escalado de manera independiente.</li>
+<li><strong>Arquitectura basada en servicios (SOA)</strong>: En esta arquitectura, la aplicación web se organiza en torno a servicios que se comunican entre sí a través de interfaces bien definidas. Esto permite una mayor modularidad y reutilización de componentes, así como una mejor integración con otros sistemas.</li>
+<li><strong>Arquitectura de cliente-servidor</strong>: En esta arquitectura, la aplicación web se divide en dos partes: el cliente, que se ejecuta en el navegador del usuario, y el servidor, que procesa las solicitudes y proporciona los datos necesarios. Esta arquitectura es ampliamente utilizada en aplicaciones web modernas y permite una separación clara entre la presentación y la lógica de negocio.</li>
+</ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Para más información sobre la licencia, visita <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a>.</p>
+<p>La arquitectura de microservicios es una de las más utilizadas hoy en día. Su auge se debe a que permite una mayor escalabilidad y flexibilidad en el desarrollo de aplicaciones web, así como una mejor integración con otros sistemas y servicios. Una de las empreass que más apostó por esta arquitectura es Netflix, que la utiliza para ofrecer su servicio de streaming de manera eficiente y escalable. Puedes encontrar más información sobre la arquitectura de microservicios en <a href="https://microservices.io/">Microservices.io</a>.</p>
 </div>
-<h3 id="versiones">Versiones</h3>
+<p>## Arquitectura de aplicaciones web y su relación con el despliegue de aplicaciones web</p>
+<p>En muchas ocasiones, la arquitectura de aplicaciones web está estrechamente relacionada con el despliegue de aplicaciones web. La forma en que se organiza y estructura la aplicación puede influir en cómo se despliega y se gestiona en un entorno de producción.</p>
+<p>Normalmente, una aplicación web se compone de varios componentes que deben ser desplegados y configurados correctamente para garantizar un funcionamiento óptimo. Esto puede incluir servidores web, bases de datos, servicios de almacenamiento y otros componentes necesarios para el correcto funcionamiento de la aplicación.</p>
+<p>Veamos un esquema:</p>
+<figure>
+   <img src="../img/appweb.png" width="550">
+   <figcaption>Arquitectura de aplicaciones web y su relación con el despliegue de aplicaciones web</figcaption>
+</figure>
+
+<p>En este esquema podemos ver los siguientes componentes:</p>
 <ul>
-<li>Septiembre 2026 - versión 1.0: Publicación inicial del tema 1 de Despliegues de aplicaciones web. (Curso 2026-2027).</li>
+<li><strong>Servidor web</strong>: Es el componente encargado de recibir las solicitudes de los usuarios y enviar las respuestas correspondientes. Puede ser un servidor HTTP como Apache o Nginx, que se encarga de servir los archivos estáticos y gestionar las solicitudes dinámicas. Normalmente se encarga del llamado Frontend, que es la parte de la aplicación web que interactúa con el usuario.</li>
+<li><strong>Servidor de aplicaciones</strong>: Es el componente encargado de ejecutar la lógica de negocio de la aplicación web. Puede ser un servidor de aplicaciones como Tomcat, JBoss o Node.js, que se encarga de procesar las solicitudes dinámicas y generar las respuestas correspondientes. Normalmente se encarga del llamado Backend, que es la parte de la aplicación web que no interactúa con el usuario. Suele usar un lenguaje de programación del lado del servidor, como PHP, Python, Ruby o Node.js, y frameworks web que facilitan la creación de aplicaciones web interactivas.</li>
+<li><strong>Base de datos</strong>: Es el componente encargado de almacenar y recuperar la información de la aplicación web. Puede ser un sistema de gestión de bases de datos como MySQL, PostgreSQL o MongoDB, que se encarga de gestionar los datos y proporcionar acceso a ellos a través de consultas y operaciones CRUD (crear, leer, actualizar y eliminar).</li>
 </ul>
 
 
@@ -999,10 +954,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.sections"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.sections"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
