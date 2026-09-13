@@ -13,6 +13,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
 copyright: Copyright &copy; 2026 Víctor Suárez. IES Puebla de Vicar.  
+extra_css:
+  - css/styles.css
 nav:
   - Home: index.md
   - Introducción: introduccion.md
