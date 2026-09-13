@@ -1,0 +1,1142 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://DaWebPuebla.github.io/tema1/configuracion_avanzada/">
+      
+      
+        <link rel="prev" href="../configuracion_servidores_web/">
+      
+      
+        <link rel="next" href="../gestion_trafico/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Configuración Avanzada - Despliegue de Aplicaciones Web - Tema 1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuracion-de-apache" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-header__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Despliegue de Aplicaciones Web - Tema 1
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuración Avanzada
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Despliegue de Aplicaciones Web - Tema 1" class="md-nav__button md-logo" aria-label="Despliegue de Aplicaciones Web - Tema 1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Despliegue de Aplicaciones Web - Tema 1
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evolucion_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evolución de la web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitecturas y Fundamentos de Despliegue
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitecturas y Fundamentos de Despliegue
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocolo_http/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    El protocolo http
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitectura_aplicaciones_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura de Aplicaciones Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../despliegue_aplicaciones_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Despliegue de Aplicaciones Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion_servidores_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación y Configuración de Servidores Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración Avanzada y Gestión de Tráfico
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuración Avanzada y Gestión de Tráfico
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración Avanzada
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuración Avanzada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inicio-y-parada-del-servicio-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inicio y parada del servicio de Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-ficheros-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración de ficheros de Apache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de ficheros de Apache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración de Directorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ficheros-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ficheros .htaccess
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ficheros .htaccess">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fichero-htpasswd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichero .htpasswd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-modulos-adicionales-en-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de módulos adicionales en Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gestion_trafico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Tráfico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seguridad y Despliegue en Entornos Virtuales
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Seguridad y Despliegue en Entornos Virtuales
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seguridad_aplicaciones_web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seguridad en Aplicaciones Web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../despliegue_entornos_virtuales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Despliegue en Entornos Virtuales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inicio-y-parada-del-servicio-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inicio y parada del servicio de Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-ficheros-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración de ficheros de Apache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de ficheros de Apache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración de Directorios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ficheros-htaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ficheros .htaccess
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ficheros .htaccess">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fichero-htpasswd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichero .htpasswd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-modulos-adicionales-en-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de módulos adicionales en Apache
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="configuracion-de-apache">Configuración de Apache</h1>
+<p>En la anterior sección, hemos instalado Apache en nuestro servidor Linux. Ahora vamos a configurar Apache para que pueda servir nuestras aplicaciones web de manera eficiente y segura.</p>
+<h2 id="inicio-y-parada-del-servicio-de-apache">Inicio y parada del servicio de Apache</h2>
+<p>Vamos a comenzar por lo básico: cómo iniciar y detener el servicio de Apache. Para ello, utilizaremos los siguientes comandos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para iniciar el servicio de Apache</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2<span class="w">  </span><span class="c1"># En Debian/Ubuntu</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd<span class="w">    </span><span class="c1"># En Red Hat/CentOS/Fedora</span>
+</code></pre></div>
+<p>Para detener el servicio de Apache, utilizaremos los siguientes comandos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para detener el servicio de Apache</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apache2<span class="w">   </span><span class="c1"># En Debian/Ubuntu</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>httpd<span class="w">     </span><span class="c1"># En Red Hat/CentOS/Fedora</span>
+</code></pre></div>
+<p>Y también podemos reiniciar el servicio de Apache utilizando los siguientes comandos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para reiniciar el servicio de Apache</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2<span class="w">  </span><span class="c1"># En Debian/Ubuntu</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>httpd<span class="w">    </span><span class="c1"># En Red Hat/CentOS/Fedora</span>
+</code></pre></div>
+<p>Además, podemos recargar la configuración de Apache sin detener el servicio utilizando los siguientes comandos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para recargar la configuración de Apache</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>apache2<span class="w">  </span><span class="c1"># En Debian/Ubuntu</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>httpd<span class="w">    </span><span class="c1"># En Red Hat/CentOS/Fedora</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Es importante tener en cuenta que los comandos anteriores requieren privilegios de administrador (root) para ejecutarse. Asegúrate de utilizar <code>sudo</code> antes de cada comando para obtener los permisos necesarios.</p>
+</div>
+<h2 id="configuracion-de-ficheros-de-apache">Configuración de ficheros de Apache</h2>
+<p>En primer lugar, toda la configuración de apache se realiza a través de ficheros de configuración; dependiendo de nuestro Sistema Operativo, estos ficheros se encuentran en diferentes ubicaciones. Por ejemplo, en distribuciones basadas en Debian/Ubuntu, los ficheros de configuración se encuentran en la carpeta <code>/etc/apache2/</code>, mientras que en distribuciones basadas en Red Hat/CentOS/Fedora, se encuentran en la carpeta <code>/etc/httpd/</code>.</p>
+<p>El fichero de configuración principal de Apache es <code>apache2.conf</code> en Debian/Ubuntu y <code>httpd.conf</code> en Red Hat/CentOS/Fedora. Este fichero contiene la configuración global del servidor web, incluyendo directivas de seguridad, módulos habilitados y configuraciones de rendimiento.</p>
+<p>Veamos un ejemplo de cómo se ve el fichero de configuración principal de Apache en Debian/Ubuntu:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># /etc/apache2/apache2.conf</span>
+<span class="c1"># Configuración global de Apache</span>
+ServerRoot<span class="w"> </span><span class="s2">"/etc/apache2"</span>
+Listen<span class="w"> </span><span class="m">80</span>
+LoadModule<span class="w"> </span>mpm_prefork_module<span class="w"> </span>/usr/lib/apache2/modules/mod_mpm_prefork.so
+&lt;Directory<span class="w"> </span>/&gt;
+<span class="w">    </span>Options<span class="w"> </span>FollowSymLinks
+<span class="w">    </span>AllowOverride<span class="w"> </span>None
+<span class="w">    </span>Require<span class="w"> </span>all<span class="w"> </span>denied
+&lt;/Directory&gt;
+&lt;Directory<span class="w"> </span>/var/www/&gt;
+<span class="w">    </span>Options<span class="w"> </span>Indexes<span class="w"> </span>FollowSymLinks
+<span class="w">    </span>AllowOverride<span class="w"> </span>None
+<span class="w">    </span>Require<span class="w"> </span>all<span class="w"> </span>granted
+&lt;/Directory&gt;
+<span class="c1"># Otras configuraciones...</span>
+</code></pre></div>
+<p>Vemos que hay una serie de directivas que controlan el comportamiento del servidor web, como la ubicación de los archivos del servidor, los módulos cargados y las configuraciones de seguridad.</p>
+<p>Veamos algunas de estas directivas en detalle:</p>
+<ul>
+<li><code>ServerRoot</code>: Especifica la ubicación del directorio raíz del servidor web. En este caso, se encuentra en <code>/etc/apache2</code>.</li>
+<li><code>Listen</code>: Especifica el puerto en el que Apache escuchará las solicitudes entrantes. En este caso, está configurado para escuchar en el puerto 80, que es el puerto predeterminado para HTTP. Podemos cambiar este puerto si queremos que Apache escuche en un puerto diferente, por ejemplo, el puerto 8080. Para ello, simplemente cambiamos la directiva <code>Listen</code> a <code>Listen 8080</code> y reiniciamos el servicio de Apache.</li>
+<li><code>LoadModule</code>: Carga los módulos de Apache que proporcionan funcionalidades adicionales al servidor web. En este caso, se está cargando el módulo <code>mod_mpm_prefork</code>, que es un módulo de procesamiento de solicitudes que utiliza un modelo de procesos prefork para manejar las solicitudes entrantes.</li>
+<li><code>&lt;Directory&gt;</code>: Define las configuraciones específicas para un directorio en particular. En este caso, se están definiendo configuraciones para el directorio raíz <code>/</code> y para el directorio <code>/var/www/</code>, que es donde se encuentran los archivos de nuestras aplicaciones web. La directiva <code>Options</code> controla las opciones disponibles para el directorio, <code>AllowOverride</code> controla si se permiten archivos <code>.htaccess</code> en el directorio y <code>Require</code> controla quién tiene acceso al directorio.</li>
+</ul>
+<p>Existen muchas más directivas que podemos configurar en el fichero de configuración principal de Apache, pero estas son algunas de las más importantes y comunes. A medida que avancemos en el curso, veremos cómo configurar otras directivas y módulos para mejorar la seguridad, el rendimiento y la funcionalidad de nuestro servidor web Apache.</p>
+<h3 id="configuracion-de-directorios">Configuración de Directorios</h3>
+<p>Al usar la directiva <code>&lt;Directory&gt;</code>, podemos especificar configuraciones específicas para diferentes directorios en nuestro servidor web. Por ejemplo, podemos configurar un directorio para que solo sea accesible desde ciertas direcciones IP, o podemos habilitar la autenticación para un directorio específico.</p>
+<p>Veamos un ejemplo de cómo configurar un directorio para que solo sea accesible desde una dirección IP específica:</p>
+<p><div class="highlight"><pre><span></span><code>&lt;Directory<span class="w"> </span>/var/www/mi_aplicacion&gt;
+<span class="w">    </span>Options<span class="w"> </span>Indexes<span class="w"> </span>FollowSymLinks
+<span class="w">    </span>AllowOverride<span class="w"> </span>None
+<span class="w">    </span>Require<span class="w"> </span>ip<span class="w"> </span><span class="m">192</span>.168.1.100
+<span class="w">    </span>Require<span class="w"> </span>host<span class="w"> </span>example.com
+&lt;/Directory&gt;
+</code></pre></div>
+Aquí, estamos configurando el directorio <code>/var/www/mi_aplicacion</code> para que solo sea accesible desde la dirección IP <code>192.168.1.100</code> y desde el host <code>example.com</code>. Esto permitirá que solo los usuarios que accedan desde esa dirección IP o desde ese host puedan ver el contenido del directorio.</p>
+<h3 id="ficheros-htaccess">Ficheros .htaccess</h3>
+<p>Hemos comentado anteriormente que la directiva <code>AllowOverride</code> controla si se permiten archivos <code>.htaccess</code> en un directorio. Los archivos <code>.htaccess</code> son archivos de configuración que se pueden colocar en un directorio específico para anular la configuración global de Apache para ese directorio.</p>
+<p>Estos ficheros son útiles para realizar configuraciones específicas para un directorio sin tener que modificar el fichero de configuración principal de Apache. Por ejemplo, podemos utilizar un archivo <code>.htaccess</code> para habilitar la autenticación en un directorio específico, redirigir URLs o habilitar la compresión de archivos.</p>
+<p>Veamos un ejemplo de cómo habilitar la autenticación en un directorio utilizando un archivo <code>.htaccess</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># /var/www/mi_aplicacion/.htaccess</span>
+AuthType<span class="w"> </span>Basic
+AuthName<span class="w"> </span><span class="s2">"Área Restringida"</span>
+AuthUserFile<span class="w"> </span>/var/www/mi_aplicacion/.htpasswd
+Require<span class="w"> </span>valid-user
+</code></pre></div>
+<p>En este ejemplo, estamos configurando la autenticación básica para el directorio <code>/var/www/mi_aplicacion</code>. La directiva <code>AuthType</code> especifica el tipo de autenticación que se utilizará, <code>AuthName</code> define el nombre del área restringida que se mostrará al usuario, <code>AuthUserFile</code> especifica la ubicación del archivo que contiene los nombres de usuario y contraseñas, y <code>Require valid-user</code> indica que solo los usuarios válidos podrán acceder al directorio.</p>
+<h4 id="fichero-htpasswd">Fichero .htpasswd</h4>
+<p>El archivo <code>.htpasswd</code> es un archivo que contiene los nombres de usuario y contraseñas para la autenticación básica en Apache. Este archivo se puede generar utilizando la herramienta <code>htpasswd</code>, que viene incluida con Apache. Para generar un archivo <code>.htpasswd</code>, podemos utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generar un archivo .htpasswd con un usuario llamado "usuario"</span>
+htpasswd<span class="w"> </span>-c<span class="w"> </span>/var/www/mi_aplicacion/.htpasswd<span class="w"> </span>usuario
+</code></pre></div>
+<p>Este comando creará un archivo <code>.htpasswd</code> en la ubicación especificada y añadirá un usuario llamado "usuario". Se nos pedirá que ingresemos una contraseña para el usuario, y el comando generará un hash de la contraseña y lo almacenará en el archivo <code>.htpasswd</code>.</p>
+<p>Un fichero <code>.htpasswd</code> puede contener múltiples usuarios y contraseñas, y cada línea del archivo representa un usuario y su contraseña encriptada. Por ejemplo, un archivo <code>.htpasswd</code> podría verse así:</p>
+<div class="highlight"><pre><span></span><code>usuario:$apr1$3G5f8JkL$K1j2l3m4n5o6p7q8r9s0t1u2v
+admin:$apr1$4H6g9KjM$L2m3n4o5p6q7r8s9t0u1v2w3x
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Es importante tener en cuenta que los archivos <code>.htaccess</code> y <code>.htpasswd</code> deben tener permisos adecuados para garantizar la seguridad de la aplicación web. Asegúrate de que estos archivos no sean accesibles públicamente y que solo los usuarios autorizados puedan acceder a ellos.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Las contraseñas almacenadas en el archivo <code>.htpasswd</code> están encriptadas utilizando un algoritmo de hash, lo que significa que no se almacenan en texto plano. Esto proporciona una capa adicional de seguridad para proteger las credenciales de los usuarios.</p>
+</div>
+<h2 id="instalacion-de-modulos-adicionales-en-apache">Instalación de módulos adicionales en Apache</h2>
+<p>Otro aspecto importante de la configuración de Apache es la instalación de módulos adicionales que proporcionan funcionalidades adicionales al servidor web. Apache viene con una serie de módulos preinstalados, pero también podemos instalar módulos adicionales según nuestras necesidades.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Un modulo de Apache es un componente que extiende la funcionalidad del servidor web. Los módulos pueden proporcionar características adicionales, como soporte para diferentes lenguajes de programación, autenticación, compresión de archivos, reescritura de URLs y mucho más.</p>
+</div>
+<p>Por ejemplo, podemos instalar el módulo <code>mod_rewrite</code>, que permite reescribir URLs y crear reglas de redirección. Para instalar este módulo en Debian/Ubuntu, podemos utilizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>a2enmod<span class="w"> </span>rewrite
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</code></pre></div>
+<p>En Red Hat/CentOS/Fedora, podemos instalar el módulo <code>mod_rewrite</code> utilizando el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>mod_rewrite
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>httpd
+</code></pre></div>
+<p>Podemos verificar que el módulo <code>mod_rewrite</code> está habilitado utilizando el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>apache2ctl<span class="w"> </span>-M<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>rewrite<span class="w">  </span><span class="c1"># En Debian/Ubuntu</span>
+httpd<span class="w"> </span>-M<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>rewrite<span class="w">        </span><span class="c1"># En Red Hat/CentOS/Fedora</span>
+</code></pre></div>
+<p>Otros módulos populares que podemos instalar en Apache, pueden ser:</p>
+<ul>
+<li><code>mod_ssl</code>: Proporciona soporte para HTTPS y certificados SSL/TLS.</li>
+<li><code>mod_headers</code>: Permite modificar las cabeceras HTTP de las respuestas del servidor web.</li>
+<li><code>mod_deflate</code>: Permite la compresión de archivos para mejorar el rendimiento de la aplicación web.</li>
+<li><code>mod_security</code>: Proporciona un firewall de aplicaciones web para proteger la aplicación web contra ataques y vulnerabilidades.</li>
+<li><code>mod_jk</code>: Permite la integración de Apache con servidores de aplicaciones Java, como Tomcat.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Víctor Suárez. IES Puebla de Vicar.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.sections"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
