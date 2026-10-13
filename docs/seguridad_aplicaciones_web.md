@@ -90,6 +90,92 @@ Si accedemos a través de un navegador web a `https://mi_dominio.com`, deberíam
 !!! info
     Es importante mencionar que la implementación de HTTPS y el uso de certificados SSL/TLS son fundamentales para garantizar la seguridad en aplicaciones web, protegiendo la información sensible de los usuarios y asegurando la autenticidad del sitio web. Además, muchos motores de búsqueda, como Google, consideran el uso de HTTPS como un factor de clasificación, lo que puede mejorar la visibilidad y el posicionamiento del sitio web en los resultados de búsqueda.
 
+
+### Ejercicio 4: Configuración VirtualHost con HTTPS en Apache
+
+Vamos a realizar el ejercicio completo de crear un certificado autofirmado y configurar un VirtualHost en Apache para habilitar HTTPS. A continuación, se detallan los pasos a seguir:
+
+Comenzaremos generando un certificado autofirmado para nuestro dominio `mi_dominio.com`. Ejecuta los siguientes comandos en tu terminal:
+
+```bash
+# Generar una clave privada
+openssl genrsa -out mi_dominio.key 2048  # clave de 2048 bits
+# Generar una solicitud de firma de certificado (CSR)
+openssl req -new -key mi_dominio.key -out mi_dominio.csr
+# Generar un certificado autofirmado válido por 365 días
+openssl x509 -req -days 365 -in mi_dominio.csr -signkey mi_dominio.key -out mi_dominio.crt
+```
+
+!!! info
+    Durante estos pasos te preguntaran diferentes datos (Pais, Estado, Ciudad, Organización, Unidad Organizativa, Nombre Común y Correo Electrónico). Asegúrate de ingresar la información correcta para tu dominio, cuando pregunte por el FQDN (Nombre Común), ingresa `midominio.com`.
+
+Una vez hecho esto, vamos a copiar estos archivos a las diferentes rutas de Apache para que pueda utilizarlos en la configuración del VirtualHost. Ejecuta los siguientes comandos:
+
+```bash
+sudo cp mi_dominio.crt /etc/ssl/certs/
+sudo cp mi_dominio.csr /etc/ssl/certs/
+sudo cp mi_dominio.key /etc/ssl/private/
+```
+
+Ahora vamos a actualizar el archivo de configuración de Apache para habilitar HTTPS. Abre el archivo de configuración del VirtualHost correspondiente a tu dominio, por ejemplo:
+
+```bash
+sudo nano /etc/apache2/sites-available/default-ssl.conf
+```
+
+!!! info
+    En caso de que no este habilitado el módulo SSL en Apache, puedes habilitarlo ejecutando el siguiente comando:
+    ```bash
+    sudo a2enmod ssl
+    ```
+
+En este fichero vamos a modificar la configuración para que apunte a nuestro certificado y clave privada. Asegúrate de que las siguientes líneas estén presentes y correctamente configuradas:
+
+```apache
+<VirtualHost *:443>
+    ServerName midominio.com
+    DocumentRoot /var/www/html
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/mi_dominio.crt
+    SSLCertificateKeyFile /etc/ssl/private/mi_dominio.key
+</VirtualHost>
+```
+
+Es importante asegurarse de que las rutas de los archivos del certificado y la clave privada sean correctas. Una vez hecho esto, guarda los cambios y cierra el editor.
+
+Para finalizar, habilita el sitio SSL y reinicia Apache para aplicar los cambios:
+
+```bash
+sudo a2ensite default-ssl.conf
+sudo systemctl restart apache2
+```
+
+Para poder encontrar el dominio en tu navegador, asegúrate de que el archivo `/etc/hosts` contenga la siguiente línea:
+
+```bash
+127.0.0.1 midominio.com
+```
+
+Con esto ya deberia de poder entontrar este dominio en tu navegador, y al acceder a `https://midominio.com`, deberías ver que la conexión es segura y que el certificado SSL/TLS es válido, indicando que la comunicación entre el cliente y el servidor está cifrada y protegida contra posibles ataques de interceptación.
+
+
+En caso de error, es posible que no este habilitado el sitio por defecto, para habilitarlo ejecuta el siguiente comando:
+
+```bash
+sudo a2ensite default-ssl.conf
+```
+
+!!! info
+    Si al acceder a `https://midominio.com` en tu navegador, ves una advertencia de seguridad indicando que el certificado no es confiable, esto se debe a que estamos utilizando un certificado autofirmado. Para entornos de producción, es recomendable obtener un certificado SSL/TLS válido emitido por una autoridad de certificación confiable.
+
+Puedes ver el certificado de la página web haciendo clic en el candado que aparece en la barra de direcciones del navegador. Esto mostrará información sobre el certificado, incluyendo el emisor, la fecha de expiración y el nivel de validación.
+
+<figure>
+  <img src="../img/autocert.png" alt="Información del certificado SSL/TLS en un navegador web" width="600">
+  <figcaption>Figura 1: Información del certificado SSL/TLS en un navegador web</figcaption>
+</figure>
+
+
 ## Autenticación y autorización
 
 La autenticación y autorización son procesos clave en la seguridad de aplicaciones web. La autenticación verifica la identidad de un usuario, mientras que la autorización determina qué recursos y acciones están permitidos para ese usuario una vez autenticado.

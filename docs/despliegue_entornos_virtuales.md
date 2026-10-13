@@ -12,28 +12,67 @@ Un Virtual Host se configura mediante un archivo de configuración específico p
 
 Normalmente, cada Virtual Host se configura en un archivo de configuración separado, que se encuentra en la carpeta de configuración del servidor web. Por ejemplo, en Apache, los archivos de configuración de los Virtual Hosts suelen encontrarse en la carpeta `/etc/apache2/sites-available/` en sistemas basados en Debian/Ubuntu, o en la carpeta `/etc/httpd/conf.d/` en sistemas basados en Red Hat/CentOS/Fedora.
 
-### Añadir un Virtual Host en Apache
+### Ejercicio 4: Añadir varios Virtual Host en Apache
 
-Para añadir un Virtual Host en Apache, debemos crear un archivo de configuración específico para el sitio web que queremos alojar. A continuación, se muestra un ejemplo de configuración de un Virtual Host para un sitio web con el dominio `www.ejemplo.com`:
+Vamos a realizar un ejercicio donde se deben de poder gestionar 2 webs en distintos dominios, para ello vamos a crear dos Virtual Host en Apache. A continuación, se muestra un ejemplo de cómo configurar dos Virtual Hosts en Apache:
+
+Vamos a crear dos archivos de configuración para los Virtual Hosts, uno para cada sitio web. Los archivos se llamarán `ejemplo1.conf` y `ejemplo2.conf`, y se guardarán en la carpeta `/etc/apache2/sites-available/`.
+
+
+Ambos archivos tendran la configuración básica de un Virtual Host, con los nombres de dominio `www.ejemplo1.com` y `www.ejemplo2.com`, y las rutas de los directorios raíz `/var/www/ejemplo1` y `/var/www/ejemplo2`, respectivamente.
+
+!!! note
+    Recuerda crear los ficheros 'index.html' en los directorios raíz de cada sitio web, para que Apache pueda servir contenido cuando se acceda a los dominios configurados. Puedes usar la siguiente plantilla básica para el contenido de los archivos 'index.html':
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejemplo 1</title>
+    </head>
+    <body>
+        <h1>Bienvenido a Ejemplo 1</h1>
+    </body>
+    </html>
+    ```
+    Puedes reemplazar el contenido de la plantilla con el contenido que desees para cada sitio web, asegurándote de crear un archivo 'index.html' en cada directorio raíz correspondiente.
+
+Recuerda crear los directorios raíz de los sitios web y colocar los archivos de contenido en ellos antes de habilitar los Virtual Hosts.
+
+Cada archivo de configuración de Virtual Host debe tener la siguiente estructura básica:
 
 ```apache
 <VirtualHost *:80>
-    ServerAdmin webmaster@ejemplo.com
-    ServerName www.ejemplo.com
-    DocumentRoot /var/www/ejemplo
-    ErrorLog ${APACHE_LOG_DIR}/ejemplo_error.log
-    CustomLog ${APACHE_LOG_DIR}/ejemplo_access.log combined
+    ServerName www.ejemplo1.com
+    DocumentRoot /var/www/ejemplo1
+    <Directory /var/www/ejemplo1>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
 </VirtualHost>
 ```
 
-En este ejemplo, se define un Virtual Host que escucha en el puerto 80 (HTTP) y se configura con el nombre de dominio `www.ejemplo.com`. La ruta del directorio raíz del sitio web se establece en `/var/www/ejemplo`, y se especifican los archivos de registro de errores y accesos para el sitio web.
+y para Ejemplo2:
 
-Este archivo de configuración debe guardarse en la carpeta de configuración de Virtual Hosts del servidor web, y luego debemos habilitar el Virtual Host y reiniciar el servidor web para que los cambios surtan efecto.
+```apache
+<VirtualHost *:80>
+    ServerName www.ejemplo2.com
+    DocumentRoot /var/www/ejemplo2
+    <Directory /var/www/ejemplo2>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
 
 Para habilitar el Virtual Host en Apache, podemos utilizar el siguiente comando en sistemas basados en Debian/Ubuntu:
 
 ```bash
-sudo a2ensite ejemplo.conf
+sudo a2ensite ejemplo1.conf
 ```
 
 Recuerda que este fichero debe guardarse en la ruta `/etc/apache2/sites-available/` y debe tener la extensión `.conf`. Una vez habilitado el Virtual Host, debemos reiniciar Apache para que los cambios tengan efecto:
@@ -42,7 +81,14 @@ Recuerda que este fichero debe guardarse en la ruta `/etc/apache2/sites-availabl
 sudo systemctl restart apache2
 ```
 
-Podemos ver los sitios web alojados buscando en la carpeta `/etc/apache2/sites-available/` y verificando los archivos de configuración de los Virtual Hosts. Cada archivo de configuración corresponde a un sitio web alojado en el servidor, y podemos identificar los sitios web por el nombre del dominio especificado en la directiva `ServerName`.
+Para ayudarnos a gestionar los dominios, podemos añadir entradas en el archivo `/etc/hosts` de nuestro sistema local para que apunten a la dirección IP del servidor donde se encuentran los Virtual Hosts. Por ejemplo:
+
+```
+127.0.0.1 www.ejemplo1.com
+127.0.0.1 www.ejemplo2.com
+```
+
+Una vez hecho esto, deberíamos poder acceder a los sitios web `www.ejemplo1.com` y `www.ejemplo2.com` desde nuestro navegador, siempre y cuando el servidor Apache esté en funcionamiento y los Virtual Hosts estén correctamente configurados.
 
 ## Máquinas Virtuales
 
