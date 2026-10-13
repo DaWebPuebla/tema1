@@ -742,6 +742,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-configuracion-virtualhost-con-https-en-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 4: Configuración VirtualHost con HTTPS en Apache
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -928,6 +939,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-configuracion-virtualhost-con-https-en-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 4: Configuración VirtualHost con HTTPS en Apache
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1039,6 +1061,65 @@ openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> <
 <p class="admonition-title">Info</p>
 <p>Es importante mencionar que la implementación de HTTPS y el uso de certificados SSL/TLS son fundamentales para garantizar la seguridad en aplicaciones web, protegiendo la información sensible de los usuarios y asegurando la autenticidad del sitio web. Además, muchos motores de búsqueda, como Google, consideran el uso de HTTPS como un factor de clasificación, lo que puede mejorar la visibilidad y el posicionamiento del sitio web en los resultados de búsqueda.</p>
 </div>
+<h3 id="ejercicio-4-configuracion-virtualhost-con-https-en-apache">Ejercicio 4: Configuración VirtualHost con HTTPS en Apache</h3>
+<p>Vamos a realizar el ejercicio completo de crear un certificado autofirmado y configurar un VirtualHost en Apache para habilitar HTTPS. A continuación, se detallan los pasos a seguir:</p>
+<p>Comenzaremos generando un certificado autofirmado para nuestro dominio <code>mi_dominio.com</code>. Ejecuta los siguientes comandos en tu terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generar una clave privada</span>
+openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>mi_dominio.key<span class="w"> </span><span class="m">2048</span><span class="w">  </span><span class="c1"># clave de 2048 bits</span>
+<span class="c1"># Generar una solicitud de firma de certificado (CSR)</span>
+openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span>mi_dominio.key<span class="w"> </span>-out<span class="w"> </span>mi_dominio.csr
+<span class="c1"># Generar un certificado autofirmado válido por 365 días</span>
+openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-in<span class="w"> </span>mi_dominio.csr<span class="w"> </span>-signkey<span class="w"> </span>mi_dominio.key<span class="w"> </span>-out<span class="w"> </span>mi_dominio.crt
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Durante estos pasos te preguntaran diferentes datos (Pais, Estado, Ciudad, Organización, Unidad Organizativa, Nombre Común y Correo Electrónico). Asegúrate de ingresar la información correcta para tu dominio, cuando pregunte por el FQDN (Nombre Común), ingresa <code>midominio.com</code>.</p>
+</div>
+<p>Una vez hecho esto, vamos a copiar estos archivos a las diferentes rutas de Apache para que pueda utilizarlos en la configuración del VirtualHost. Ejecuta los siguientes comandos:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>cp<span class="w"> </span>mi_dominio.crt<span class="w"> </span>/etc/ssl/certs/
+sudo<span class="w"> </span>cp<span class="w"> </span>mi_dominio.csr<span class="w"> </span>/etc/ssl/certs/
+sudo<span class="w"> </span>cp<span class="w"> </span>mi_dominio.key<span class="w"> </span>/etc/ssl/private/
+</code></pre></div>
+<p>Ahora vamos a actualizar el archivo de configuración de Apache para habilitar HTTPS. Abre el archivo de configuración del VirtualHost correspondiente a tu dominio, por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/apache2/sites-available/default-ssl.conf
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>En caso de que no este habilitado el módulo SSL en Apache, puedes habilitarlo ejecutando el siguiente comando:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>a2enmod<span class="w"> </span>ssl
+</code></pre></div></p>
+</div>
+<p>En este fichero vamos a modificar la configuración para que apunte a nuestro certificado y clave privada. Asegúrate de que las siguientes líneas estén presentes y correctamente configuradas:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:443</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nb">ServerName</span><span class="w"> </span>midominio.com
+<span class="w">    </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="sx">/var/www/html</span>
+<span class="w">    </span><span class="nb">SSLEngine</span><span class="w"> </span><span class="k">on</span>
+<span class="w">    </span><span class="nb">SSLCertificateFile</span><span class="w"> </span><span class="sx">/etc/ssl/certs/mi_dominio.crt</span>
+<span class="w">    </span><span class="nb">SSLCertificateKeyFile</span><span class="w"> </span><span class="sx">/etc/ssl/private/mi_dominio.key</span>
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</code></pre></div>
+<p>Es importante asegurarse de que las rutas de los archivos del certificado y la clave privada sean correctas. Una vez hecho esto, guarda los cambios y cierra el editor.</p>
+<p>Para finalizar, habilita el sitio SSL y reinicia Apache para aplicar los cambios:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>a2ensite<span class="w"> </span>default-ssl.conf
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</code></pre></div>
+<p>Para poder encontrar el dominio en tu navegador, asegúrate de que el archivo <code>/etc/hosts</code> contenga la siguiente línea:</p>
+<div class="highlight"><pre><span></span><code><span class="m">127</span>.0.0.1<span class="w"> </span>midominio.com
+</code></pre></div>
+<p>Con esto ya deberia de poder entontrar este dominio en tu navegador, y al acceder a <code>https://midominio.com</code>, deberías ver que la conexión es segura y que el certificado SSL/TLS es válido, indicando que la comunicación entre el cliente y el servidor está cifrada y protegida contra posibles ataques de interceptación.</p>
+<p>En caso de error, es posible que no este habilitado el sitio por defecto, para habilitarlo ejecuta el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>a2ensite<span class="w"> </span>default-ssl.conf
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Si al acceder a <code>https://midominio.com</code> en tu navegador, ves una advertencia de seguridad indicando que el certificado no es confiable, esto se debe a que estamos utilizando un certificado autofirmado. Para entornos de producción, es recomendable obtener un certificado SSL/TLS válido emitido por una autoridad de certificación confiable.</p>
+</div>
+<p>Puedes ver el certificado de la página web haciendo clic en el candado que aparece en la barra de direcciones del navegador. Esto mostrará información sobre el certificado, incluyendo el emisor, la fecha de expiración y el nivel de validación.</p>
+<figure>
+  <img src="../img/autocert.png" alt="Información del certificado SSL/TLS en un navegador web" width="600">
+  <figcaption>Figura 1: Información del certificado SSL/TLS en un navegador web</figcaption>
+</figure>
+
 <h2 id="autenticacion-y-autorizacion">Autenticación y autorización</h2>
 <p>La autenticación y autorización son procesos clave en la seguridad de aplicaciones web. La autenticación verifica la identidad de un usuario, mientras que la autorización determina qué recursos y acciones están permitidos para ese usuario una vez autenticado.</p>
 <p>Hemos visto que la autenticación puede implementarse mediante diferentes métodos, como contraseñas, tokens de acceso y autenticación multifactor (MFA). La autorización, por otro lado, se basa en roles y permisos para controlar el acceso a los recursos de la aplicación web.</p>
